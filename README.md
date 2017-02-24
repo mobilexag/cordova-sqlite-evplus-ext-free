@@ -1,5 +1,7 @@
 # Cordova/PhoneGap sqlite storage - premium enterprise version with performance improvements for Android and FUTURE TBD other extra features
 
+[![Join the chat at https://gitter.im/mobilexag/cordova-sqlite-evplus-ext-free](https://badges.gitter.im/mobilexag/cordova-sqlite-evplus-ext-free.svg)](https://gitter.im/mobilexag/cordova-sqlite-evplus-ext-free?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Native interface to sqlite in a Cordova/PhoneGap plugin for Android, iOS, macOS, and Windows 10 (UWP), with API similar to HTML5/[Web SQL API](http://www.w3.org/TR/webdatabase/).
 
 This version uses a special native C library to provide significantly better performance as well as memory usage improvements for Android.
