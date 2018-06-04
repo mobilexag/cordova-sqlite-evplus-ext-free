@@ -19,7 +19,9 @@ var pluginScenarioList = [
   'Plugin-implementation-2'
 ];
 
-var pluginScenarioCount = isAndroid ? 2 : 1;
+// XXX TBD:
+// var pluginScenarioCount = isAndroid ? 2 : 1;
+var pluginScenarioCount = 1;
 
 var mytests = function() {
 
@@ -520,13 +522,17 @@ var mytests = function() {
               expect(false).toBe(true);
               db.close(done, done);
             }, function(error) {
-              // NOT EXPECTED:
-              expect(false).toBe(true);
+              // XXX EXPECTED RESULT:
+              expect(error).toBeDefined();
+              expect(error.message).toBeDefined();
+              expect(error.message).toMatch(/sqlBatch array element of zero .*0.* length/);
               db.close(done, done);
             });
-            // SHOULD NOT GET HERE:
-            expect(false).toBe(true);
+            // XXX GONE [...]:
+            // expect(false).toBe(true);
           } catch(e) {
+            // XXX NOT EXPECTED:
+            expect(false).toBe(true);
             expect(e).toBeDefined();
             expect(e.message).toMatch(/sqlBatch array element of zero .*0.* length/);
             db.close(done, done);

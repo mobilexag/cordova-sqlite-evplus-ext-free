@@ -45,7 +45,10 @@ var scenarioList = [
   'Plugin-implementation-2'
 ];
 
-var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+// var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+
+// XXX MOVED TO HERE...
+var pluginScenarioCount = 1;
 
 var mytests = function() {
 
@@ -56,7 +59,8 @@ var mytests = function() {
       'Plugin-implementation-2'
     ];
 
-    var pluginScenarioCount = isAndroid ? 2 : 1;
+    // XXX MOVED:
+    // var pluginScenarioCount = isAndroid ? 2 : 1;
 
     for (var i=0; i<pluginScenarioCount; ++i) {
 
@@ -952,7 +956,8 @@ var mytests = function() {
       'Plugin-implementation-2'
     ];
 
-    var pluginScenarioCount = isAndroid ? 2 : 1;
+    // XXX MOVED:
+    // var pluginScenarioCount = isAndroid ? 2 : 1;
 
     for (var i=0; i<pluginScenarioCount; ++i) {
 
@@ -1648,7 +1653,8 @@ var mytests = function() {
       'Plugin-implementation-2'
     ];
 
-    var pluginScenarioCount = isAndroid ? 2 : 1;
+    // XXX MOVED:
+    // var pluginScenarioCount = isAndroid ? 2 : 1;
 
     for (var i=0; i<pluginScenarioCount; ++i) {
 

@@ -19,7 +19,8 @@ var scenarioList = [
   'Plugin-implementation-2'
 ];
 
-var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+// var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+var scenarioCount = (!!window.hasWebKitBrowser) ? 2 : 1;
 
 // FUTURE TBD SPLIT SCRIPT THIS EVEN FURTHER
 

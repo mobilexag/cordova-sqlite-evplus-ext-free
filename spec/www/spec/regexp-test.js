@@ -12,7 +12,9 @@ var isAndroid = (isAndroidUA && !isWindows);
 
 var scenarioList = [ isAndroid ? 'Plugin-implementation-default' : 'Plugin', 'HTML5', 'Plugin-implementation-2' ];
 
-var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+// XXX TBD:
+// var scenarioCount = (!!window.hasWebKitBrowser) ? (isAndroid ? 3 : 2) : 1;
+var scenarioCount = (!!window.hasWebKitBrowser) ? 2 : 1;
 
 var mytests = function() {
 
