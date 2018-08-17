@@ -2,7 +2,8 @@
 
 var MYTIMEOUT = 20000;
 
-var isWindows = /Windows /.test(navigator.userAgent); // Windows
+// XXX
+var isWindows = /MSAppHost/.test(navigator.userAgent);
 var isAndroid = !isWindows && /Android/.test(navigator.userAgent);
 
 var pluginScenarioList = [

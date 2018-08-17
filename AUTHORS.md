@@ -10,6 +10,10 @@
 - Android JSON memory fix by @brodybits (Chris Brody)
 - _Premium performance and memory usage enhancements by @brodybits (Chris Brody)_
 
+## browser platform
+
+- Using sql-memory-growth.js from SQL.js by @kripken (Alon Zakai)
+
 ## Android version
 
 - Extracted from DroidGap by @brodybits (Chris Brody)

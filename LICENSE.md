@@ -12,6 +12,8 @@ The Windows platform version includes SQLite3-WinRT by @doo (doo GmbH) under MIT
 
 Other components:
 
+sql-memory-growth.js - from SQL.js by @kripken (Alon Zakai), MIT license
+
 sqlite3-regexp-cached - adapted by @brodybits (Christopher J. Brody), based on sqlite3-pcre (http://git.altlinux.org/people/at/packages/?p=sqlite3-pcre.git) by Alexey Tourbin, public domain
 
 sqlite3-base64 by @brodybits (Christopher J. Brody), Unlicense (http://unlicense.org/ - public domain)

@@ -1,5 +1,18 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.4-rc1
+
+### cordova-sqlite-storage 3.0.0-0.00-01
+
+- Initial browser platform support using sql-memory-growth.js from SQL.js, with some limitations as documented
+
+### cordova-sqlite-storage 2.4.0
+
+- Report internal plugin error in case of attempt to open database with no database name on iOS or macOS
+- Cover use of standard (WebKit) Web SQL API in spec test suite
+- Test and document insertId in UPDATE result set on plugin vs (WebKit) Web SQL
+- other test updates
+
 # cordova-sqlite-evplus-ext-free 0.3.3
 
 ## cordova-plugin-sqlite-evplus-ext-common-free 0.1.2

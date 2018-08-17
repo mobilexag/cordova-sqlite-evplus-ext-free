@@ -2,7 +2,7 @@
 
 var MYTIMEOUT = 12000;
 
-var DEFAULT_SIZE = 5000000; // max to avoid popup in safari/ios
+// NOTE: DEFAULT_SIZE wanted depends on type of browser
 
 // FUTURE TODO replace in test(s):
 function ok(test, desc) { expect(test).toBe(true); }
@@ -30,9 +30,18 @@ function start(n) {
   if (wait == 0) test_it_done();
 }
 
-var isWP8 = /IEMobile/.test(navigator.userAgent); // Matches WP(7/8/8.1)
-var isWindows = /Windows /.test(navigator.userAgent);
+var isWindows = /MSAppHost/.test(navigator.userAgent);
 var isAndroid = !isWindows && /Android/.test(navigator.userAgent);
+var isFirefox = /Firefox/.test(navigator.userAgent);
+var isWebKitBrowser = !isWindows && !isAndroid && /Safari/.test(navigator.userAgent);
+var isBrowser = isWebKitBrowser || isFirefox;
+var isEdgeBrowser = isBrowser && (/Edge/.test(navigator.userAgent));
+var isChromeBrowser = isBrowser && !isEdgeBrowser && (/Chrome/.test(navigator.userAgent));
+var isSafariBrowser = isWebKitBrowser && !isEdgeBrowser && !isChromeBrowser;
+
+// should avoid popups (Safari seems to count 2x)
+var DEFAULT_SIZE = isSafariBrowser ? 2000000 : 5000000;
+// FUTURE TBD: 50MB should be OK on Chrome and some other test browsers.
 
 // NOTE: While in certain version branches there is no difference between
 // the default Android implementation and implementation #2,
@@ -52,6 +61,9 @@ var mytests = function() {
     for (var i=0; i<pluginScenarioCount; ++i) {
 
       describe(pluginScenarioList[i] + ': open database file name test(s)', function() {
+        // TBD SKIP open database file name test(s) on browser platform for now:
+        if (isBrowser) return;
+
         var scenarioName = pluginScenarioList[i];
         var suiteName = scenarioName + ': ';
         var isImpl2 = (i === 1);
@@ -229,7 +241,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'Open database with u2028 & check internal database file name on Windows ONLY [KNOWN ISSUE on Cordova for Android/iOS/...]', function(done) {
-          if (!isWindows) pending('SKIP for Android/macOS/iOS due to KNOWN CORDOVA ISSUE');
+          if (isAndroid || isAppleMobileOS || isMac) pending('SKIP for Android/macOS/iOS due to KNOWN CORDOVA ISSUE');
 
           var dbName = 'first\u2028second.db';
 
@@ -269,7 +281,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'Open database with u2029 & check internal database file name on Windows ONLY [KNOWN ISSUE on Cordova for Android/iOS/...]', function(done) {
-          if (!isWindows) pending('SKIP for Android/macOS/iOS due to KNOWN CORDOVA ISSUE');
+          if (isAndroid || isAppleMobileOS || isMac) pending('SKIP for Android/macOS/iOS due to KNOWN CORDOVA ISSUE');
 
           var dbName = 'first\u2029second.db';
 
@@ -571,7 +583,7 @@ var mytests = function() {
           }
         }, MYTIMEOUT);
 
-      if (window.hasWebKitBrowser)
+      if (window.hasWebKitWebSQL)
         it('Web SQL check that db name is really a string', function(done) {
           var p1 = { name: 'my.db.name', location: 'default' };
           try {
@@ -1471,7 +1483,7 @@ var mytests = function() {
 
         test_it(suiteName + ' database.close (immediately after open) calls its success callback', function () {
           // TBD POSSIBLY BROKEN on iOS/macOS due to current background processing implementation:
-          if (!isAndroid && !isWindows && !isWP8) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
+          if (!isAndroid && !isWindows) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
 
           // asynch test coming up
           stop(1);
@@ -1807,7 +1819,7 @@ var mytests = function() {
         // XXX SEE BELOW: repeat scenario but wait for open callback before close/delete/reopen
         // Needed to support some large-scale applications:
         test_it(suiteName + ' immediate close, then delete then re-open allows subsequent queries to run', function () {
-          if (!isAndroid && !isWindows && !isWP8) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
+          if (!isAndroid && !isWindows) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
 
           var dbName = "Immediate-close-delete-Reopen.db";
           var dbargs = {name: dbName, location: 'default'};
@@ -1954,7 +1966,7 @@ var mytests = function() {
 
         test_it(suiteName + ' repeatedly open and close database faster (5x)', function () {
           // TBD CURRENTLY BROKEN on iOS/macOS due to current background processing implementation:
-          if (!isAndroid && !isWindows && !isWP8) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
+          if (!isAndroid && !isWindows) pending('CURRENTLY BROKEN on iOS/macOS (background processing implementation)');
           // TBD ???:
           if (isAndroid && isImpl2) pending('FAILS on builtin android.database implementation (androidDatabaseImplementation: 2)');
 
@@ -2078,7 +2090,7 @@ var mytests = function() {
         // Needed to support some large-scale applications:
         test_it(suiteName + ' repeatedly open and delete database faster (5x)', function () {
           // TBD POSSIBLY BROKEN on iOS/macOS ...
-          // if (!isAndroid && !isWindows && !isWP8) pending(...);
+          // if (!isAndroid && !isWindows) pending(...);
           // TBD CURRENTLY BROKEN DUE TO BUG 666 WORKAROUND SOLUTION
           pending('CURRENTLY BROKEN DUE TO BUG 666 WORKAROUND SOLUTION');
 
