@@ -543,9 +543,11 @@
       flatlist.push @db.dbid
       flatlist.push batchExecutesLength
 
-      # THANKS for GUIDANCE:
-      # https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push#Merging_two_arrays
-      Array.prototype.push.apply(flatlist, flatBatchExecutes)
+      # Copy flatBatchExecutes in chunks to prevent stack overflow
+      # See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply#Using_apply_and_built-in_functions
+      maxBlockSize = 100;
+      for start in [0...flatBatchExecutes.length] by maxBlockSize
+        Array.prototype.push.apply(flatlist, flatBatchExecutes.slice(start, start + maxBlockSize))
 
       flatlist.push 'extra'
 
