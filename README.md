@@ -8,9 +8,9 @@ Native SQLite component with API based on HTML5/[Web SQL (DRAFT) API](http://www
 
 This plugin version uses a special _non-standard_ Android NDK sqlite database access library (C-language implementation) to provide significant performance and memory usage improvements on the Android platform.
 
-Browser platform is currently supported with some limitations as described in [browser platform usage notes](#browser-platform-usage-notes) section below, will be supported with more features such as numbered parameters in upcoming major release for July 2018 (see below).
+Browser platform is currently supported with some limitations as described in [browser platform usage notes](#browser-platform-usage-notes) section below, will be supported with more features such as numbered parameters in upcoming major release for September 2018 (see below).
 
-This plugin version uses a special Android NDK sqlite database access library (C-language implementation) to provide significant performance and memory usage improvements on the Android platform.
+This plugin version uses a special Android NDK sqlite database access library (C-language implementation), with some premium improvements to the internal JSON interface between the Javascript and native Android implementation, to provide significant performance and memory usage improvements on the Android platform.
 
 This plugin version is available under GPL v3 (<https://www.gnu.org/licenses/gpl-3.0.txt>) or commercial license options and includes components available under the MIT and Apache 2.0 licenses listed in [LICENSE.md](./LICENSE.md). Contact for commercial license: <sales@litehelpers.net>
 
@@ -20,9 +20,9 @@ This plugin version is available under GPL v3 (<https://www.gnu.org/licenses/gpl
 
 with possible corruption risk in case of sqlite access from multiple plugins (see below)
 
-## NEW MAJOR RELEASE in July 2018 with BREAKING CHANGES
+## NEW MAJOR RELEASE in September 2018 with BREAKING CHANGES
 
-New release in July 2018 will include the following major enhancements ([litehelpers/Cordova-sqlite-storage#773](https://github.com/litehelpers/Cordova-sqlite-storage/issues/773)):
+New release in September 2018 will include the following major enhancements ([litehelpers/Cordova-sqlite-storage#773](https://github.com/litehelpers/Cordova-sqlite-storage/issues/773)):
 
 - browser platform support using [kripken / sql.js](https://github.com/kripken/sql.js) ([litehelpers/Cordova-sqlite-storage#576](https://github.com/litehelpers/Cordova-sqlite-storage/pull/576))
 - `cordova-sqlite-storage` and `cordova-sqlite-ext` plugin versions will be combined, no more separate plugin version needed for pre-populated databases ([litehelpers/Cordova-sqlite-storage#529](https://github.com/litehelpers/Cordova-sqlite-storage/issues/529))
@@ -273,7 +273,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
 - [nolanlawson / pouchdb-adapter-cordova-sqlite](https://github.com/nolanlawson/pouchdb-adapter-cordova-sqlite) supports this plugin along with other implementations such as [nolanlawson / sqlite-plugin-2](https://github.com/nolanlawson/sqlite-plugin-2) and [Microsoft / cordova-plugin-websql](https://github.com/Microsoft/cordova-plugin-websql).
 - Custom Android database location (supports external storage directory)
 - macOS ("osx" platform) is now supported
-- For the Android platform this plugin version uses the lightweight, performant [litehelpers / Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) database access implementation (by default configuration). [Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) is a NDK library (with C-language implementation) for JSON and SQL statement handling which processes large batches in less than half the time compared to [litehelpers / Cordova-sqlite-storage](https://github.com/litehelpers/Cordova-sqlite-storage), as measured by: [brodybits / Cordova-sql-test-app](https://github.com/brodybits/Cordova-sql-test-app)
+- For the Android platform this plugin version uses the lightweight, performant [litehelpers / Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) database access implementation, with some premium improvements to the internal JSON interface (by default configuration). [Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) is a NDK library (with C-language implementation) for JSON and SQL statement handling which processes large batches in less than half the time compared to [litehelpers / Cordova-sqlite-storage](https://github.com/litehelpers/Cordova-sqlite-storage), as measured by: [brodybits / Cordova-sql-test-app](https://github.com/brodybits/Cordova-sql-test-app)
 - Published [brodybits / Cordova-quick-start-checklist](https://github.com/brodybits/Cordova-quick-start-checklist) and [brodybits / Avoiding-some-Cordova-pitfalls](https://github.com/brodybits/Avoiding-some-Cordova-pitfalls).
 - Self-test functions to verify proper installation and operation of this plugin
 - More explicit `openDatabase` and `deleteDatabase` `iosDatabaseLocation` option
@@ -357,6 +357,8 @@ and limit database access to DRAFT standard transactions, no plugin-specific API
 - no `sqlBatch` calls
 - no `echoTest` or `selfTest` possible
 - no `deleteDatabase` calls
+
+This kind of usage on Safari and Chrome desktop browser (with (WebKit) Web SQL) is now covered by the `spec` test suite.
 
 It would be ideal for the application code to abstract the openDatabase part away from the rest of the database access code.
 
@@ -552,6 +554,7 @@ As "strongly recommended" by [Web SQL Database API 8.5 SQL injection](https://ww
 - If the SQL arguments are passed in an `Array` subclass object where the `constructor` does not point to `Array` then the SQL arguments are ignored by the plugin.
 - The results data objects are not immutable as specified/implied by [Web SQL (DRAFT) API section 4.5](https://www.w3.org/TR/webdatabase/#database-query-results).
 - This plugin supports use of numbered parameters (`?1`, `?2`, etc.) as documented in <https://www.sqlite.org/c3ref/bind_blob.html>, not supported by HTML5/[Web SQL (DRAFT) API](http://www.w3.org/TR/webdatabase/) ref: [Web SQL (DRAFT) API section 4.2](https://www.w3.org/TR/webdatabase/#parsing-and-processing-sql-statements).
+- In case of UPDATE this plugin reports `insertId` with the result of `sqlite3_last_insert_rowid()` (except for Android with `androidDatabaseImplementation: 2` setting) while attempt to access `insertId` on the result set database opened by HTML5/[Web SQL (DRAFT) API](http://www.w3.org/TR/webdatabase/) results in an exception.
 
 ### Security of deleted data
 
@@ -871,7 +874,7 @@ window.resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function(ex
 
 **WARNING:** Again, the new "default" iosDatabaseLocation value is *NOT* the same as the old default location and would break an upgrade for an app using the old default value (0) on iOS.
 
-DEPRECATED ALTERNATIVE to be removed in July 2018:
+DEPRECATED ALTERNATIVE to be removed in September 2018:
 - `var db = window.sqlitePlugin.openDatabase({name: "my.db", location: 1}, successcb, errorcb);`
 
 with the `location` option set to one the following choices (affects iOS *only*):
@@ -1823,7 +1826,7 @@ function closeDB() {
 - `src`: platform-specific source code
 - `node_modules`: placeholder for external dependencies
 - `scripts`: installation hook script to fetch the external dependencies via `npm`
-- `spec`: test suite using Jasmine (`2.5.2`)
+- `spec`: test suite using Jasmine (`2.5.2`), also passes on (WebKit) Web SQL on Android, iOS, Safari desktop browser, and Chrome desktop browser
 - `tests`: very simple Jasmine test suite that is run on Circle CI (Android platform) and Travis CI (iOS platform) (used as a placeholder)
 
 <!-- END Source tree -->

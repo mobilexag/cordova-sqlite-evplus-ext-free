@@ -465,15 +465,10 @@ Contact for commercial license: sales@litehelpers.net
   };
 
   SQLitePluginTransaction.prototype.run_batch_flatjson = function(batchExecutesLength, flatBatchExecutes, handlerFor) {
-    var flatlist, l, maxBlockSize, mycb, ref, ref1, start;
-    flatlist = [];
+    var flatlist, mycb;
     this.db.dbid = this.db.dbidmap[this.db.dbname];
-    flatlist.push(this.db.dbid);
-    flatlist.push(batchExecutesLength);
-    maxBlockSize = 100;
-    for (start = l = 0, ref = flatBatchExecutes.length, ref1 = maxBlockSize; ref1 > 0 ? l < ref : l > ref; start = l += ref1) {
-      Array.prototype.push.apply(flatlist, flatBatchExecutes.slice(start, start + maxBlockSize));
-    }
+    flatlist = [this.db.dbid, batchExecutesLength];
+    flatlist = flatlist.concat(flatBatchExecutes);
     flatlist.push('extra');
     mycb = function(result) {
       var c, changes, code, errormessage, i, insert_id, j, k, r, ri, rl, row, rows, v;

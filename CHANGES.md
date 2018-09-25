@@ -1,12 +1,27 @@
 # Changes
 
-# cordova-sqlite-evplus-ext-free 0.3.5-pre01
+# cordova-sqlite-evplus-ext-free 0.3.5-rc1
 
-TBD
+- evcore-native-driver.jar from cordova-sqlite-evcore-free-dependencies 0.8.4, with quick fix for error messages on Android
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.1.4
+
+### cordova-sqlite-evcore-common-free 0.0.2
+
+#### cordova-sqlite-storage 2.4.0
+
+- Report internal plugin error in case of attempt to open database with no database name on iOS or macOS
+- Cover use of standard (WebKit) Web SQL API in spec test suite
+- Test and document insertId in UPDATE result set on plugin vs (WebKit) Web SQL
+- other test updates
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.1.3
+
+- Use Array.prototype.concat to solve perf issue
 
 # cordova-sqlite-evplus-ext-free 0.3.4
 
-- Fix stack overflow
+- Fix stack overflow (CLOBBERED BY UPDATE from cordova-plugin-sqlite-evplus-ext-common-free 0.1.3)
 
 # cordova-sqlite-evplus-ext-free 0.3.3	
 
