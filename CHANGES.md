@@ -1,6 +1,6 @@
 # Changes
 
-# cordova-sqlite-evplus-ext-free 0.3.5-rc1
+# cordova-sqlite-evplus-ext-free 0.3.5
 
 - evcore-native-driver.jar from cordova-sqlite-evcore-free-dependencies 0.8.4, with quick fix for error messages on Android
 
