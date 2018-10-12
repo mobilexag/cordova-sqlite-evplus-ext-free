@@ -540,8 +540,8 @@ var mytests = function() {
         // - litehelpers/Cordova-sqlite-evcore-extbuild-free#19
         // - litehelpers/Android-sqlite-evcore-native-driver-free#1
         // - litehelpers/Cordova-sqlite-evcore-extbuild-free#7 (XXX KNOWN CRASH issue on Android)
-        it(suiteName + 'INSERT TEXT string with emoji [\\u1F603 SMILING FACE (MOUTH OPEN)], SELECT the data, check, and check HEX [XXX TBD TRUNCATION BUG REPRODUCED on Windows; default sqlite HEX encoding: UTF-6le on Windows & Android 4.1-4.3 (WebKit) Web SQL, UTF-8 otherwise]' , function(done) {
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
+        it(suiteName + 'INSERT TEXT string with emoji [\\u1F603 SMILING FACE (MOUTH OPEN)], SELECT the data, check, and check HEX [XXX TBD value result IGNORED on Android; TRUNCATION BUG REPRODUCED on Windows; default sqlite HEX encoding: UTF-6le on Windows & Android 4.1-4.3 (WebKit) Web SQL, UTF-8 otherwise]' , function(done) {
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
 
           var db = openDatabase('INSERT-emoji-and-check.db', '1.0', 'Demo', DEFAULT_SIZE);
 
@@ -578,9 +578,9 @@ var mytests = function() {
 
                     if (isWindows || (isWebSql && isAndroid && /Android 4.[1-3]/.test(navigator.userAgent)))
                       expect(rs3.rows.item(0).hexvalue).toBe('40003DD803DE2100'); // (UTF-16le)
-                    /* XXX TBD HEX encoding BUG IGNORED on default Android NDK access implementation (...)
+                    //* XXX TBD HEX encoding BUG IGNORED on default Android NDK access implementation (...)
                     else if (!isWebSql && isAndroid && !isImpl2)
-                      expect(rs3.rows.item(0).hexvalue).toBe('--'); // (...) */
+                      expect(rs3.rows.item(0).hexvalue).toBeDefined(); // XXX TBD
                     else
                       expect(rs3.rows.item(0).hexvalue).toBe('40F09F988321'); // (UTF-8)
 

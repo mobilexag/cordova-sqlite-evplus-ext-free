@@ -1234,7 +1234,7 @@ var mytests = function() {
 
         it(suiteName + 'string manipulation test with UTF-8 3-byte Samaritan character Bit (U+0801)', function(done) {
           // ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#37
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
 
           var db = openDatabase('UTF8-0801-string-upper-value-test.db');
 
@@ -1340,7 +1340,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'string manipulation test with UTF-8 4-byte Gothic bairkan 𐌱 (U+10331)', function(done) {
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#7
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX ref: litehelpers/Cordova-sqlite-evcore-extbuild-free#7
 
           var db = openDatabase('UTF8-2050-upper-value-string-test.db');
 
@@ -1372,7 +1372,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'Inline emoji string manipulation test: SELECT UPPER("a\\uD83D\\uDE03.") [\\u1F603 SMILING FACE (MOUTH OPEN)]', function(done) {
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
 
           var db = openDatabase('Inline-emoji-select-upper-test.db');
           expect(db).toBeDefined();
@@ -1399,7 +1399,7 @@ var mytests = function() {
         }, MYTIMEOUT);
 
         it(suiteName + 'emoji string argument value manipulation test', function(done) {
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
 
           var db = openDatabase('emoji-string-argument-upper-value-test.db');
           expect(db).toBeDefined();
@@ -1483,7 +1483,7 @@ var mytests = function() {
 
         it(suiteName + "Inline BLOB with emoji string manipulation test: SELECT LOWER(X'41F09F9883') [A\uD83D\uDE03] [\\u1F603 SMILING FACE (MOUTH OPEN)]", function(done) {
           if (isWebSql && isAndroid && /Android 4.[1-3]/.test(navigator.userAgent)) pending('SKIP for Android 4.1-4.3 (WebKit) Web SQL'); // TBD ???
-          if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('XXX KNOWN CRASH ISSUE on Android (default evcore-native-driver database access implementation)'); // XXX
           if (isWindows) pending('SKIP for Windows'); // FUTURE TBD
 
           var db = openDatabase("Inline-emoji-select-lower-result-test.db", "1.0", "Demo", DEFAULT_SIZE);
@@ -1496,6 +1496,7 @@ var mytests = function() {
               expect(rs).toBeDefined();
               expect(rs.rows).toBeDefined();
               expect(rs.rows.length).toBe(1);
+              if (!isWebSql && isAndroid && !isImpl2) { expect(rs.rows.item(0).lowertext).toBeDefined(); return done(); } // XXX TBD
               expect(rs.rows.item(0).lowertext).toBe('a\uD83D\uDE03');
 
               // Close (plugin only) & finish:
