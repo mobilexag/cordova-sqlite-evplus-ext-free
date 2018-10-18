@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.6
+
+- evcore-native-driver.jar from cordova-sqlite-evcore-free-dependencies 0.8.6, with cleaner workaround for 4-byte UTF-8 crash bug and fix for Samaritan character crash bug on Android
+
 # cordova-sqlite-evplus-ext-free 0.3.5
 
 - evcore-native-driver.jar from cordova-sqlite-evcore-free-dependencies 0.8.4, with quick fix for error messages on Android
