@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.4.0-pre1
+
+- EU character support in UPPER & LOWER functions
+
 # cordova-sqlite-evplus-ext-free 0.3.8
 
 - SQLite 3.28.0 update from cordova-sqlite-evcore-free-dependencies 0.9.1
