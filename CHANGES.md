@@ -1,5 +1,11 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.3.9-pre1
+
+### cordova-sqlite-storage-commoncore 1.0.0
+
+- additional EU string manipulation test cases
+
 # cordova-sqlite-evplus-ext-free 0.3.8
 
 - SQLite 3.28.0 update from cordova-sqlite-evcore-free-dependencies 0.9.1
