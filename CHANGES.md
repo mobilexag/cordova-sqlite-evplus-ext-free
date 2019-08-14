@@ -1,5 +1,11 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.4.1-pre1
+
+### cordova-sqlite-evcore-commoncore-free 0.0.1
+
+- quick fix of error messages on Windows
+
 # cordova-sqlite-evplus-ext-free 0.4.0
 
 - EU character support in UPPER & LOWER functions using functions from: https://github.com/brodybits/sqlite3-eu - with Android implementation built from: https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free/tree/eu-support-wipsave101 which includes fix for emojis and other 4-byte UTF-8 characters
