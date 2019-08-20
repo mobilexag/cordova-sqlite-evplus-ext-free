@@ -1,6 +1,6 @@
 # Changes
 
-# cordova-sqlite-evplus-ext-free 0.4.1-pre1
+# cordova-sqlite-evplus-ext-free 0.4.1
 
 ### cordova-sqlite-evcore-commoncore-free 0.0.1
 
