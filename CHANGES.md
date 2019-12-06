@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.4.2-pre1
+
+- SQLite 3.30.1 update, with Android implementation build make from: https://github.com/brodysoft/Android-sqlite-evcore-native-driver-free/tree/sqlite3-eu-dev
+
 # cordova-sqlite-evplus-ext-free 0.4.1
 
 ### cordova-sqlite-evcore-commoncore-free 0.0.1
