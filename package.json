@@ -1,6 +1,6 @@
 {
   "name": "cordova-sqlite-evplus-ext-free",
-  "version": "0.4.2-pre1",
+  "version": "0.5.0-pre01",
   "description": "Cordova/PhoneGap sqlite storage - free enterprise version [evplus version] with Android performance/memory improvements and TBD other extra features for PhoneGap Build",
   "cordova": {
     "id": "cordova-sqlite-evplus-ext-free",
@@ -30,9 +30,13 @@
   },
   "homepage": "https://github.com/mobilexag/cordova-sqlite-evplus-ext-free",
   "scripts": {
-    "start": "node scripts/prepareSpec.js"
+    "clean-spec": "rm -rf spec/[mnp]* && git cl spec/config.xml && git status --ignored",
+    "prepare-js": "coffee -p SQLitePlugin.coffee.md > www/SQLitePlugin.js",
+    "prepare-spec": "node scripts/prepareSpec.js"
   },
   "devDependencies": {
-    "shelljs": "^0.7.4"
+    "coffeescript": "1",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^8.1.0"
   }
 }
