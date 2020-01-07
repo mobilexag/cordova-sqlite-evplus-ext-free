@@ -1845,6 +1845,8 @@ var mytests = function() {
           // XXX TBD KNOWN CRASH on Android evcore with sqlite3-eu
           if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('BROKEN: CRASH on Android 5.x/... (default evcore-native-driver database access implementation)');
           if (isAppleMobileOS || isMac) pending('KNOWN CRASH on iOS/macOS (evplus)'); // XXX
+          // XXX TBD GONE:
+          // if (!isWebSql && !isWindows && isAndroid && !isImpl2) pending('BROKEN: CRASH on Android 5.x/... (default evcore-native-driver database access implementation)');
 
           var db = openDatabase("Inline-SELECT-BLOB-FFD1FFD2-result-test.db", "1.0", "Demo", DEFAULT_SIZE);
 

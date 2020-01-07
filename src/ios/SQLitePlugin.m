@@ -300,7 +300,7 @@
     int ai = 2;
 
     @synchronized(self) {
-#if 0
+#if 0 // XXX GONE:
         for (NSMutableDictionary *dict in executes) {
             CDVPluginResult *result = [self executeSqlWithDict:dict andArgs:dbargs];
             if ([result.status intValue] == CDVCommandStatus_ERROR) {

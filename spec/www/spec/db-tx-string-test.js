@@ -1652,6 +1652,7 @@ var mytests = function() {
           // - litehelpers/Cordova-sqlite-storage#564
           // - litehelpers/Cordova-sqlite-evcore-extbuild-free#7
           if (isMac || (!isWebSql && isAppleMobileOS)) pending('XXX KNOWN CRASH on iOS/macOS plugin in this plugin version (evplus)'); // XXX
+          // if (isAppleMobileOS || isMac) pending('KNOWN CRASH on iOS/macOS (evplus)'); // XXX
           if (isWindows) pending('XXX TBD PLUGIN KNOWN TO CRASH on Windows platform in this plugin version (...)'); // XXX
           if (!isWebSql && isAndroid && !isImpl2 && (/Android [4-5]/.test(navigator.userAgent))) pending('XXX TBD POSSIBLE PLUGIN CRASH on Android pre-6.0 (...)'); // XXX TBD ???
 
@@ -1840,6 +1841,7 @@ var mytests = function() {
           // - litehelpers/Cordova-sqlite-storage#564
           // - litehelpers/Cordova-sqlite-evcore-extbuild-free#7
           if (!isWebSql && isAndroid && !isImpl2 && (/Android [4-5]/.test(navigator.userAgent))) pending('XXX TBD POSSIBLE PLUGIN CRASH on Android pre-6.0 (...)'); // XXX TBD ???
+          // if (isAppleMobileOS || isMac) pending('KNOWN CRASH on iOS/macOS (evplus)'); // XXX
           if (isMac || (!isWebSql && isAppleMobileOS)) pending('XXX KNOWN CRASH on iOS/macOS plugin in this plugin version (evplus)'); // XXX
           if (isWindows) pending('XXX TBD POSSIBLE CRASH OF THIS PLUGIN VERSION on Windows (...)'); // XXX TBD ???
 
