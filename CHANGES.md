@@ -1,5 +1,7 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.5.0-rc3-dev
+
 # cordova-sqlite-evplus-ext-free 0.5.0-rc2
 
 - remove some extra logging from this plugin version
