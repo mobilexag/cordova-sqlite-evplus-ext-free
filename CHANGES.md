@@ -1,5 +1,119 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.5.0-rc3
+
+- apply SQLite 3.34.0 update
+
+## cordova-sqlite-evcore-extbuild-free 0.12.0
+
+### cordova-sqlite-evcore-commoncore-free 0.2.0
+
+### cordova-sqlite-ext-common 3.0.0
+
+#### cordova-sqlite-storage 5.0.0
+
+- avoid incorrect default directory on iOS/macOS - to be extra safe (see <https://github.com/xpbrew/cordova-sqlite-storage/issues/907>)
+  - ensure that default "nosync" directory *always* has resource value set for `NSURLIsExcludedFromBackupKey`
+  - add more checks for missing database directory
+
+# cordova-sqlite-evplus-ext-free 0.5.0-rc2
+
+- remove some extra logging from this plugin version
+
+## cordova-plugin-sqlite-evplus-ext-common-free 0.2.0
+
+### cordova-sqlite-evcore-commoncore-free 0.1.0-rc1
+
+# cordova-sqlite-evplus-ext-free 0.5.0-pre01
+
+# cordova-sqlite-evcore-extbuild-free 0.11.0
+
+### cordova-sqlite-evcore-commoncore-free 0.1.0
+
+- internal Android evcore database state 100% non-static and private
+
+#### cordova-sqlite-ext-common 2.0.0
+- SQLite 3.30.1 build update, with new default page & cache sizes from cordova-sqlite-ext-deps@2.1.0
+
+#### cordova-sqlite-storage 4.0.0
+
+- rename PSPDFThreadSafeMutableDictionary to CustomPSPDFThreadSafeMutableDictionary and completely remove PSPDFThreadSafeMutableDictionary.h
+
+#### cordova-sqlite-storage 3.4.1
+
+- SQLite 3.31.1 update from cordova-sqlite-storage-dependencies@2.1.1
+
+#### cordova-sqlite-storage 3.4.0
+
+- quick workaround for `SYNTAX_ERR` redefinition
+
+#### cordova-sqlite-storage 3.3.0
+
+- new default page & cache sizes with cordova-sqlite-storage-dependencies@2.1.0
+
+##### cordova-sqlite-storage-commoncore 1.0.0
+
+- additional EU string manipulation test cases
+
+#### cordova-sqlite-storage 3.2.1
+
+- cordova-sqlite-storage-dependencies@2.0.1 with SQLite 3.28.0 update for all supported platforms Android/iOS/macOS/Windows
+
+#### cordova-sqlite-storage 3.2.0
+
+- sqlite3_threadsafe() error handling on iOS/macOS
+
+#### cordova-sqlite-storage 3.1.0
+
+- no SQLITE_DEFAULT_CACHE_SIZE compile-time setting on iOS/macOS/Windows
+
+#### cordova-sqlite-storage 3.0.0
+
+- Use cordova-sqlite-storage-dependencies 2.0.0 with SQLITE_DBCONFIG_DEFENSIVE setting used by sqlite-native-driver.jar on Android
+
+###### cordova-sqlite-ext-common-core 0.2.0
+
+- Move SQLite3.UWP.vcxproj out of extra SQLite3.UWP subdirectory
+- Completely remove old Windows 8.1 & Windows Phone 8.1 vcxproj files
+
+###### cordova-sqlite-extcore 0.1.0
+
+- move the embedded `SQLite3-WinRT` component to `src/windows/SQLite3-WinRT-sync` and update `plugin.xml`
+
+### cordova-sqlite-ext-common 1.0.0
+
+- Use cordova-sqlite-ext-deps@2.0.0 with SQLITE_DBCONFIG_DEFENSIVE setting used by sqlite-native-driver.jar on Android
+
+### cordova-sqlite-common-ext-common 0.2.0
+
+- SQLite3 build updates from cordova-sqlite-ext version 2.3.1:
+  - build with SQLite 3.26.0 from cordova-sqlite-ext-deps@1.1.1
+  - sqlite-native-driver NDK build in JAR
+  - FTS5 & JSON1 enabled on all platforms
+  - SQLITE_DEFAULT_SYNCHRONOUS=3 (EXTRA DURABLE) compile-time setting on all platforms
+  - continue using SQLITE_THREADSAFE=1 on all platforms
+
+# cordova-sqlite-evcore-extbuild-free 0.10.3-rc1
+
+### cordova-sqlite-evcore-commoncore-free 0.0.2
+
+- use & test with cordova-sqlite-evcore-free-dependencies@0.9.2 with SQLite 3.30.1 update
+
+###### cordova-sqlite-storage-ext-core-common 2.0.0
+
+- SQLITE_DBCONFIG_DEFENSIVE flag - iOS/macOS/Windows (POTENTIALLY BREAKING CHANGE)
+- remove internal qid usage from JavaScript (not needed)
+- non-static Android database runner map (POTENTIALLY BREAKING CHANGE)
+- Completely remove old Android SuppressLint (android.annotation.SuppressLint) - POSSIBLY BREAKING CHANGE
+- drop workaround for pre-Honeycomb Android API (BREAKING CHANGE)
+- no extra @synchronized block per batch (iOS/macOS) - should be considered a POSSIBLY BREAKING change
+- remove backgroundExecuteSql method not needed (iOS/macOS)
+- Completely remove iOS/macOS MRC (Manual Reference Counting) support - should be considered a POSSIBLY BREAKING change
+
+# cordova-sqlite-evplus-ext-free 0.4.2-pre1
+
+- SQLite 3.30.1 update (with sqlite3-eu support included) with Android implementation built from: https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/c449991a235320f39a25dc72fd5b9a9e7047cbf0
+
 # cordova-sqlite-evplus-ext-free 0.4.1
 
 ### cordova-sqlite-evcore-commoncore-free 0.0.1
@@ -8,7 +122,7 @@
 
 # cordova-sqlite-evplus-ext-free 0.4.0
 
-- EU character support in UPPER & LOWER functions using functions from: https://github.com/brodybits/sqlite3-eu - with Android implementation built from: https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free/tree/eu-support-wipsave101 which includes fix for emojis and other 4-byte UTF-8 characters
+- EU character support in UPPER & LOWER functions using functions from: https://github.com/brodybits/sqlite3-eu - with Android implementation built from: https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/ce924ece9ad66263e4e52ff5b00a1bf8ad8534fd which includes fix for emojis and other 4-byte UTF-8 characters
 
 ### cordova-sqlite-storage-commoncore 1.0.0
 

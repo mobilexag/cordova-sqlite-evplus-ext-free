@@ -104,7 +104,8 @@
 
       @openSuccess or
         @openSuccess = ->
-          console.log "DB opened: " + dbname
+          # TBD (...)
+          # console.log "DB opened: " + dbname
           return
 
       @openError or
@@ -141,7 +142,9 @@
 
       else
         if @dbname of @openDBs
-          console.log 'new transaction is queued, waiting for open operation to finish'
+          # TBD (...)
+          # console.log 'new transaction is queued, waiting for open operation to finish'
+          return
         else
           # XXX SHOULD NOT GET HERE.
           # FUTURE TBD TODO: in this exceptional case abort and discard the transaction.
@@ -224,11 +227,14 @@
         # (done)
 
       else
-        console.log 'OPEN database: ' + @dbname
+        # openDatabase step 1:
+        # TBD (...)
+        # console.log 'OPEN database: ' + @dbname
 
         opensuccesscb = (fjinfo) =>
           # NOTE: the db state is NOT stored (in @openDBs) if the db was closed or deleted.
-          console.log 'OPEN database: ' + @dbname + ' - OK'
+          # TBD (...)
+          # console.log 'OPEN database: ' + @dbname + ' - OK'
 
           # distinguish use of flat JSON batch sql interface
           if !!fjinfo and !!fjinfo.dbid
@@ -293,7 +299,8 @@
           error newSQLError 'database cannot be closed while a transaction is in progress'
           return
 
-        console.log 'CLOSE database: ' + @dbname
+        # TBD (...)
+        # console.log 'CLOSE database: ' + @dbname
 
         # NOTE: closing one db handle disables other handles to same db
         # FUTURE TBD TODO ref litehelpers/Cordova-sqlite-storage#210:
@@ -667,7 +674,6 @@
         for resultIndex in [0 .. result.length-1]
           r = result[resultIndex]
           type = r.type
-          # NOTE: r.qid ignored (if present)
           res = r.result
 
           q = mycbmap[resultIndex]
