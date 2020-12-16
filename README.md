@@ -48,7 +48,7 @@ __XXX TODO evplus feature MISSING in this plugin version: iOS performance enhanc
 
 ### Multiple SQLite problem on Android
 
-_This plugin uses non-standard [litehelpers / Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) sqlite database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>._
+This plugin uses non-standard [brodybits/android-sqlite-evcore-native-driver-free (evcore-sqlite3-eu-support branch)](https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/evcore-sqlite3-eu-support) sqlite database access implementation on Android. In case an application access the SAME database using multiple plugins there is a risk of data corruption ref: [xpbrew/cordova-sqlite-storage#626](https://github.com/xpbrew/cordova-sqlite-storage/issues/626)) as described in <http://ericsink.com/entries/multiple_sqlite_problem.html> and <https://www.sqlite.org/howtocorrupt.html>.
 
 The workaround is to use the `androidDatabaseProvider: 'system'` setting as described in the [Android database provider](#android-database-provider) section below:
 
@@ -213,7 +213,7 @@ See the [Sample section](#sample) for a sample with a more detailed explanation 
   - <https://www.sqlite.org/releaselog/3_26_0.html>
 - The iOS database location is now mandatory, as documented below.
 - _This plugin version_ supports the use of two (2) possible Android sqlite database implementations:
-  - default: high-performance, lightweight [litehelpers / Android-sqlite-evcore-native-driver-free](https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free) NDK library (C-language implementation)
+  - default: high-performance, lightweight [android-sqlite-evcore-native-driver-free (using evcore-sqlite3-eu-support branch)](https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/evcore-sqlite3-eu-support) NDK library (C-language implementation)
   - optional: Android system database implementation, using the `androidDatabaseProvider: 'system'` setting in `sqlitePlugin.openDatabase()` call as described in the [Android database provider](#android-database-provider) section below.
 - The following feature is available in [litehelpers / cordova-sqlite-ext](https://github.com/litehelpers/cordova-sqlite-ext) (with permissive license terms, missing Android-sqlite-evcore-native-driver performance enhancements), MISSING in this plugin version:
   - Pre-populated database (Android/iOS/macOS/Windows)

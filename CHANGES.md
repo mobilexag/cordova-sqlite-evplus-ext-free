@@ -97,7 +97,7 @@
 
 # cordova-sqlite-evplus-ext-free 0.4.2-pre1
 
-- SQLite 3.30.1 update, with Android implementation build make from: https://github.com/brodysoft/Android-sqlite-evcore-native-driver-free/tree/sqlite3-eu-dev
+- SQLite 3.30.1 update (with sqlite3-eu support included) with Android implementation built from: https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/c449991a235320f39a25dc72fd5b9a9e7047cbf0
 
 # cordova-sqlite-evplus-ext-free 0.4.1
 
@@ -107,7 +107,7 @@
 
 # cordova-sqlite-evplus-ext-free 0.4.0
 
-- EU character support in UPPER & LOWER functions using functions from: https://github.com/brodybits/sqlite3-eu - with Android implementation built from: https://github.com/litehelpers/Android-sqlite-evcore-native-driver-free/tree/eu-support-wipsave101 which includes fix for emojis and other 4-byte UTF-8 characters
+- EU character support in UPPER & LOWER functions using functions from: https://github.com/brodybits/sqlite3-eu - with Android implementation built from: https://github.com/brodybits/android-sqlite-evcore-native-driver-free/tree/ce924ece9ad66263e4e52ff5b00a1bf8ad8534fd which includes fix for emojis and other 4-byte UTF-8 characters
 
 ### cordova-sqlite-storage-commoncore 1.0.0
 
