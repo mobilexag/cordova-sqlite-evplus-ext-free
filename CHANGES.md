@@ -1,5 +1,9 @@
 # Changes
 
+# cordova-sqlite-evplus-ext-free 0.7.0
+
+- support new Android page size with NDK rebuild using NDK r29
+
 # cordova-sqlite-evplus-ext-free 0.6.1
 
 - update SQLite to 3.37.2 for all platforms - resolves an extremely rare corruption issue that was introduced in SQLite 3.35.0 ref:
